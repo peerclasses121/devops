@@ -1,0 +1,31 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Resources": {
+		"outputVPC": {
+			"Type": "AWS::EC2::VPC",
+			"Properties": {
+				"CidrBlock": "10.11.0.0/16",
+				"EnableDnsSupport": "false",
+				"EnableDnsHostnames": "false",
+				"InstanceTenancy": "default",
+				"Tags": [{
+					"Key": "Name",
+					"Value": "VPC-OUTPUT"
+				}]
+			}
+		}
+	},
+	"Outputs": {
+		"VPCId": {
+			"Description": "VPC ID",
+			"Value": {
+				"Ref": "outputVPC"
+			},
+			"Export": {
+				"Name": {
+					"Fn::Sub": "${AWS::StackName}-VPCID"
+				}
+			}
+		}
+	}
+}

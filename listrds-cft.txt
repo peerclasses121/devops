@@ -1,0 +1,47 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "AWS Aurora MySql, Do Not Remove Apache License Version 2.0 (qs-) Jun,15,2019",
+  "Metadata": {
+    "LICENSE": "Apache License Version 2.0"
+  },
+  "Parameters": {
+    "DBInstanceID": {
+      "Description": "Select RDS instance from the below list ",
+      "Type": "String",
+      "Default": "testdb",
+      "AllowedValues": [
+        "testdb",
+        "proddb",
+        "db1",
+        "db2",
+        "db3",
+        "db4"
+      ]
+    }
+  },
+  "Resources": {
+    "MyEC2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": "ami-79fd7eee",
+        "KeyName": "testkey",
+        "BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/sdm",
+            "Ebs": {
+              "VolumeType": "io1",
+              "Iops": "200",
+              "DeleteOnTermination": "false",
+              "VolumeSize": "20"
+            }
+          },
+          {
+            "DeviceName": "/dev/sdk",
+            "NoDevice": {
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,2 +1,2 @@
-# Repo for AWS Automation
-Repo contains cloudformation and boto3 scripts
+# Initiall Repo for Test
+This for testing repo
